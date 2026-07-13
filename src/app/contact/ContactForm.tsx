@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Phone } from "lucide-react";
 import { SITE, CTA } from "@/lib/content";
 import { PageHero, HeroReveal } from "@/components/travel/PageHero";
 import { IMAGES } from "@/lib/images";
@@ -17,7 +16,7 @@ export default function ContactForm() {
           <p className="hero-eyebrow mb-4">Contact</p>
           <h1 className="display hero-on-dark max-w-xl">Plan your journey</h1>
           <p className="hero-lead mt-4">
-            Domestic or international — we help plan every detail of your trip.
+            Domestic or international — tell us what you need and we&apos;ll build your offer.
           </p>
         </div>
       </PageHero>
@@ -37,21 +36,15 @@ export default function ContactForm() {
               </div>
               <div>
                 <dt className="chapter mb-1">Phone</dt>
-                <dd>
-                  <a href={`tel:${SITE.phoneTel}`} className="link-underline">{SITE.phone}</a>
-                </dd>
+                <dd>{SITE.phone}</dd>
               </div>
               <div>
                 <dt className="chapter mb-1">WhatsApp only</dt>
                 <dd>{SITE.whatsapp}</dd>
               </div>
             </dl>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a href={`tel:${SITE.phoneTel}`} className="btn-solid inline-flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                {CTA.callNow}
-              </a>
-              <Link href="/request" className="btn-outline-travel">{CTA.planTrip}</Link>
+            <div className="mt-8">
+              <Link href="/request" className="btn-solid">{CTA.planTrip}</Link>
             </div>
           </div>
 

@@ -26,7 +26,8 @@ export default function TravelStylesPage() {
           {TRAVEL_STYLES.map((style, i) => (
             <article
               key={style.slug}
-              className="card-travel group grid overflow-hidden bg-white lg:grid-cols-2"
+              id={style.slug}
+              className="card-travel group grid scroll-mt-24 overflow-hidden bg-white lg:grid-cols-2"
             >
               <TravelImage
                 image={style.image}

@@ -13,12 +13,20 @@ export const SITE = {
 
 export const CTA = {
   planTrip: "Plan Your Trip",
-  callNow: "Call Now",
   appointment: "Make an Appointment",
   learnMore: "Learn More",
   submitRequest: "Submit Trip Request",
 } as const;
 
+export type NavChild = { label: string; href: string };
+
+export type NavMenuItem = {
+  label: string;
+  href?: string;
+  children?: readonly NavChild[];
+};
+
+/** Flat links for footer */
 export const NAV_PRIMARY = [
   { href: "/destinations", label: "Destinations" },
   { href: "/vacation-rentals", label: "Vacation Rentals" },
@@ -186,6 +194,45 @@ export const TRAVEL_STYLES = [
     image: IMAGES.heroMountains,
   },
 ] as const;
+
+/** Main nav with dropdown submenus */
+export const NAV_MENU: readonly NavMenuItem[] = [
+  { label: "Home", href: "/" },
+  {
+    label: "Destinations",
+    href: "/destinations",
+    children: DESTINATIONS.map((d) => ({
+      label: d.name,
+      href: `/destinations#${d.slug}`,
+    })),
+  },
+  {
+    label: "Vacation Rentals",
+    href: "/vacation-rentals",
+    children: VACATION_RENTALS.map((r) => ({
+      label: r.name,
+      href: `/vacation-rentals#${r.slug}`,
+    })),
+  },
+  {
+    label: "Safari & Packages",
+    href: "/travel-styles",
+    children: TRAVEL_STYLES.map((s) => ({
+      label: s.title,
+      href: `/travel-styles#${s.slug}`,
+    })),
+  },
+  {
+    label: "Contact Us",
+    href: "/contact",
+    children: [
+      { label: "Testimonials", href: "/testimonials" },
+      { label: "About Us", href: "/about" },
+      { label: "How It Works", href: "/how-it-works" },
+      { label: "FAQ", href: "/faq" },
+    ],
+  },
+];
 
 export const TESTIMONIALS = [
   {

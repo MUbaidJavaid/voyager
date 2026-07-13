@@ -33,7 +33,7 @@ export default function VacationRentalsPage() {
           </p>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {VACATION_RENTALS.map((rental) => (
-              <article key={rental.slug} className="card-travel group bg-white">
+              <article key={rental.slug} id={rental.slug} className="card-travel group scroll-mt-24 bg-white">
                 <TravelImage
                   image={rental.image}
                   className="aspect-[4/3] w-full min-w-0 transition-transform duration-700 group-hover:scale-105"
@@ -53,7 +53,6 @@ export default function VacationRentalsPage() {
 
           <div className="mt-16 flex flex-wrap gap-4 border-t border-ink/10 pt-12">
             <Link href="/request" className="btn-solid">{CTA.planTrip}</Link>
-            <a href={`tel:${SITE.phoneTel}`} className="btn-outline-travel">{CTA.callNow}</a>
             <Link href="/contact" className="btn-outline-travel">{CTA.appointment}</Link>
           </div>
         </section>

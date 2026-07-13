@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { TravelImage } from "@/components/travel/TravelImage";
 import { ParallaxBand } from "@/components/travel/FixedBackground";
 import { PageHero, HeroReveal } from "@/components/travel/PageHero";
@@ -26,16 +26,9 @@ export default function HomePage() {
             >
               {CTA.planTrip}
             </Link>
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="inline-flex items-center gap-2 border-2 border-sand/70 px-8 py-4 text-base font-medium text-sand hover:bg-sand/10"
-            >
-              <Phone className="h-5 w-5" />
-              {CTA.callNow}
-            </a>
             <Link
               href="/how-it-works"
-              className="inline-block border-2 border-sand/50 px-8 py-4 text-base font-medium text-sand/90 hover:bg-sand/10"
+              className="inline-block border-2 border-sand/70 px-8 py-4 text-base font-medium text-sand hover:bg-sand/10"
             >
               How It Works
             </Link>
@@ -180,14 +173,7 @@ export default function HomePage() {
             <Link href="/contact" className="inline-block bg-sand px-8 py-4 text-base font-medium text-ink">
               {CTA.appointment}
             </Link>
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="inline-flex items-center gap-2 border-2 border-sand/70 px-8 py-4 text-base text-sand hover:bg-sand/10"
-            >
-              <Phone className="h-4 w-4" />
-              {CTA.callNow}
-            </a>
-            <Link href="/request" className="inline-block border-2 border-sand/50 px-8 py-4 text-base text-sand hover:bg-sand/10">
+            <Link href="/request" className="inline-block border-2 border-sand/70 px-8 py-4 text-base text-sand hover:bg-sand/10">
               {CTA.planTrip}
             </Link>
           </div>

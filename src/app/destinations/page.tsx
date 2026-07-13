@@ -28,7 +28,7 @@ export default function DestinationsPage() {
           </p>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {DESTINATIONS.map((d) => (
-              <article key={d.slug} className="card-travel group bg-white">
+              <article key={d.slug} id={d.slug} className="card-travel group scroll-mt-24 bg-white">
                 <TravelImage
                   image={d.image}
                   className="aspect-[4/3] w-full min-w-0 transition-transform duration-700 group-hover:scale-105"
