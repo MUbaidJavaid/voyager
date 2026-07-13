@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sand: #f6f2ea;
+  --color-sand-dark: #ece6db;
+  --color-ink: #1c1a17;
+  --color-ink-muted: #6b6560;
+  --color-gold: #9a7b52;
+  --color-ocean: #3d5a62;
+
+  --color-background: #111318;
+  --color-surface: #181b22;
+  --color-surface-elevated: #22262f;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-foreground: #eceae6;
+  --color-muted: #8a8680;
+  --color-accent: #6eb5aa;
+
+  --font-display: var(--font-newsreader);
+  --font-body: var(--font-source);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    @apply antialiased;
+  }
+
+  ::selection {
+    background: rgba(154, 123, 82, 0.28);
+    color: #1c1a17;
+  }
+}
+
+@layer utilities {
+  .theme-travel {
+    @apply bg-sand text-ink;
+  }
+
+  .theme-platform {
+    @apply bg-background text-foreground;
+  }
+
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+
+  /* Restrained scale — no billboard headlines */
+  .display {
+    font-family: var(--font-display), Georgia, serif;
+    @apply text-[2.25rem] font-normal leading-[1.12] tracking-[-0.01em] md:text-[3rem] lg:text-[3.5rem];
+  }
+
+  .title {
+    font-family: var(--font-display), Georgia, serif;
+    @apply text-[1.75rem] font-normal leading-snug tracking-[-0.01em] md:text-[2.25rem];
+  }
+
+  .subtitle {
+    font-family: var(--font-display), Georgia, serif;
+    @apply text-[1.375rem] font-normal leading-snug md:text-[1.5rem];
+  }
+
+  .copy-lg {
+    @apply text-[1.125rem] leading-[1.75] text-ink-muted md:text-[1.25rem] md:leading-[1.8];
+  }
+
+  .copy {
+    @apply text-[1.0625rem] leading-[1.7] text-ink-muted md:text-[1.125rem];
+  }
+
+  .hero-eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.22em] text-sand md:text-base;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-lead {
+    @apply text-[1.125rem] leading-[1.75] text-sand md:text-xl md:leading-[1.8];
+    text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-on-dark {
+    color: #f6f2ea;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .theme-platform .hero-eyebrow {
+    color: var(--color-accent);
+  }
+
+  .chapter {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold md:text-sm;
+  }
+
+  .measure {
+    @apply max-w-[36rem];
+  }
+
+  .measure-wide {
+    @apply max-w-[42rem];
+  }
+
+  .section-a {
+    @apply px-6 py-16 md:px-10 md:py-20 lg:px-16;
+  }
+
+  .section-b {
+    @apply px-6 py-24 md:px-10 md:py-32 lg:px-16;
+  }
+
+  .section-c {
+    @apply px-6 py-12 md:px-10 md:py-16 lg:px-16;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .link-underline {
+    @apply text-ink underline decoration-ink/25 underline-offset-[5px] transition-colors hover:decoration-ink/60;
+  }
+
+  .link-underline-platform {
+    @apply text-foreground underline decoration-foreground/25 underline-offset-[5px] hover:decoration-foreground/50;
+  }
+
+  .btn-solid {
+    @apply inline-block bg-ink px-6 py-3 text-sm font-medium tracking-wide text-sand transition-colors hover:bg-ink/85;
+  }
+
+  .btn-solid-platform {
+    @apply inline-block bg-accent px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-accent/90;
+  }
+
+  .card-travel {
+    @apply overflow-hidden shadow-[0_8px_32px_rgba(28,26,23,0.08)];
+  }
+
+  .bg-fixed-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .hero-parallax-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  @media (max-width: 768px) {
+    .bg-fixed-cover,
+    .hero-parallax-bg {
+      background-attachment: scroll;
+    }
+  }
+
+  .image-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(28, 26, 23, 0.78) 0%,
+      rgba(28, 26, 23, 0.15) 50%,
+      rgba(28, 26, 23, 0.05) 100%
+    );
+  }
+
+  .doc-block {
+    @apply border border-border bg-surface font-mono text-[0.8125rem] leading-relaxed text-muted;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .container-narrow { @apply mx-auto max-w-3xl; }
+  .container-prose { @apply mx-auto max-w-[36rem]; }
+  .prose-travel { @apply text-[1.0625rem] leading-[1.7] text-ink-muted md:text-[1.125rem]; }
+  .prose-platform { @apply text-[1rem] leading-[1.65] text-muted md:text-[1.0625rem]; }
+  .label-caps { @apply text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-gold; }
+  .heading-xl { @apply text-[2rem] font-normal leading-[1.15] tracking-[-0.01em] md:text-[2.75rem] lg:text-[3.25rem]; font-family: var(--font-display), Georgia, serif; }
+  .heading-lg { @apply text-[1.625rem] font-normal leading-snug md:text-[2rem]; font-family: var(--font-display), Georgia, serif; }
+  .heading-md, .heading-sm { @apply text-xl font-normal leading-snug md:text-[1.375rem]; font-family: var(--font-display), Georgia, serif; }
+  .section-padding { @apply px-6 py-16 md:px-10 md:py-20 lg:px-16; }
+  .btn-primary-travel { @apply inline-block bg-ink px-6 py-3 text-sm font-medium tracking-wide text-sand hover:bg-ink/85; }
+  .btn-primary-platform { @apply inline-block bg-accent px-6 py-3 text-sm font-medium text-background hover:bg-accent/90; }
+  .btn-outline-travel { @apply inline-block border border-ink/20 px-6 py-3 text-base font-medium text-ink hover:border-ink/35; }
+}
