@@ -1,34 +1,41 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { TravelImage } from "@/components/travel/TravelImage";
 import { ParallaxBand } from "@/components/travel/FixedBackground";
 import { PageHero, HeroReveal } from "@/components/travel/PageHero";
 import { IMAGES } from "@/lib/images";
-import { SITE, DESTINATIONS, TRAVEL_STYLES } from "@/lib/content";
+import { SITE, DESTINATIONS, TRAVEL_STYLES, CTA } from "@/lib/content";
 
 export default function HomePage() {
   return (
     <main className="theme-travel">
       <PageHero image={IMAGES.heroCoastal} fullViewport>
         <div className="section-b container-wide">
-          <p className="hero-eyebrow mb-5">Personalized travel</p>
+          <p className="hero-eyebrow mb-5">{SITE.tagline}</p>
           <h1 className="display hero-on-dark max-w-3xl">
-            Journeys built for you — not from a catalog.
+            Book your next dream vacation with us.
           </h1>
           <p className="hero-lead mt-6 max-w-xl">
-            Flights, stays, safaris, and transfers — hand-assembled by our team, tracked on
-            our own platform.
+            Flights, tour packages, vacation rentals, hotels, safaris, activities, and
+            transfers — a travel plan built around your dates, style, and budget.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               href="/request"
               className="inline-block bg-sand px-8 py-4 text-base font-medium text-ink hover:bg-sand/90"
             >
-              Request a Trip
+              {CTA.planTrip}
             </Link>
+            <a
+              href={`tel:${SITE.phoneTel}`}
+              className="inline-flex items-center gap-2 border-2 border-sand/70 px-8 py-4 text-base font-medium text-sand hover:bg-sand/10"
+            >
+              <Phone className="h-5 w-5" />
+              {CTA.callNow}
+            </a>
             <Link
               href="/how-it-works"
-              className="inline-block border-2 border-sand/70 px-8 py-4 text-base font-medium text-sand hover:bg-sand/10"
+              className="inline-block border-2 border-sand/50 px-8 py-4 text-base font-medium text-sand/90 hover:bg-sand/10"
             >
               How It Works
             </Link>
@@ -41,10 +48,13 @@ export default function HomePage() {
           <div className="mx-auto mb-8 h-px w-16 bg-gold/60" />
           <h2 className="title mb-8">Welcome to {SITE.name}</h2>
           <p className="copy-lg leading-loose">
-            We plan trips around your brief — destination, dates, pace, and taste. Every offer
-            is assembled line by line. That is the service. The platform behind it keeps
-            nothing in email.
+            Where travel meets tailoring. We craft unforgettable journeys as unique as you
+            are — from sun-kissed escapes to cultural odysseys. Our expert curators
+            personalize every detail to match your style, interests, and dreams.
           </p>
+          <Link href="/about" className="link-underline mt-8 inline-block text-base">
+            {CTA.learnMore} about us
+          </Link>
         </div>
       </HeroReveal>
 
@@ -52,7 +62,7 @@ export default function HomePage() {
         <div className="container-wide">
           <div className="mb-12 max-w-xl">
             <p className="chapter mb-3">Experiences</p>
-            <h2 className="title">Travel styles we plan</h2>
+            <h2 className="title">Safari packages & vacation rentals</h2>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
             {TRAVEL_STYLES.map((style) => (
@@ -65,8 +75,11 @@ export default function HomePage() {
                 <div className="flex flex-col justify-center p-8 md:p-10">
                   <h3 className="subtitle mb-4">{style.title}</h3>
                   <p className="copy mb-6">{style.description}</p>
-                  <Link href="/travel-styles" className="inline-flex items-center gap-2 text-base font-medium text-ocean hover:underline">
-                    Learn more <ArrowRight className="h-5 w-5" />
+                  <Link
+                    href={style.slug === "rentals" ? "/vacation-rentals" : "/travel-styles"}
+                    className="inline-flex items-center gap-2 text-base font-medium text-ocean hover:underline"
+                  >
+                    {CTA.learnMore} <ArrowRight className="h-5 w-5" />
                   </Link>
                 </div>
               </article>
@@ -80,7 +93,7 @@ export default function HomePage() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="chapter mb-3">Destinations</p>
-              <h2 className="title">Where we take you</h2>
+              <h2 className="title">Worldwide destinations at your fingertips</h2>
             </div>
             <Link href="/destinations" className="btn-outline-travel text-base">
               View all
@@ -106,6 +119,9 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+          <div className="mt-12 text-center">
+            <Link href="/request" className="btn-solid">{CTA.planTrip}</Link>
+          </div>
         </div>
       </section>
 
@@ -116,16 +132,20 @@ export default function HomePage() {
             Tell us what you want. We build the offer.
           </h2>
           <p className="hero-lead max-w-xl mb-8">
-            Six-step request form. Hand-built itinerary. One record for every message and revision.
+            Six-step request form. Hand-built itinerary. Flights, stays, and activities in one plan.
           </p>
-          <Link href="/how-it-works" className="inline-block bg-sand px-8 py-4 text-base font-medium text-ink">
-            See the process
+          <Link href="/request" className="inline-block bg-sand px-8 py-4 text-base font-medium text-ink">
+            {CTA.planTrip}
           </Link>
         </div>
       </ParallaxBand>
 
       <HeroReveal>
         <div className="section-b container-wide">
+          <div className="mb-12 text-center">
+            <p className="chapter mb-3">Reviews</p>
+            <h2 className="title">Trusted by travelers</h2>
+          </div>
           <div className="grid gap-6 md:grid-cols-3">
             {[
               { image: IMAGES.amalfi, title: "Plan", text: "Destination, dates, flights, and stays in one request." },
@@ -142,10 +162,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="copy mt-10 text-center">
-            Built on our own platform —{" "}
-            <Link href="/dashboard" className="link-underline">dashboard preview</Link>
-            {" · "}
-            <Link href="/technology" className="link-underline">technology</Link>
+            <Link href="/testimonials" className="link-underline">Read client testimonials</Link>
           </p>
         </div>
       </HeroReveal>
@@ -155,14 +172,23 @@ export default function HomePage() {
           <div>
             <p className="hero-eyebrow mb-4">Contact</p>
             <h2 className="title hero-on-dark mb-4">Plan your next trip</h2>
-            <p className="hero-lead">{SITE.email} · {SITE.phone}</p>
+            <p className="hero-lead">{SITE.email}</p>
+            <p className="hero-lead mt-2">{SITE.phone}</p>
+            <p className="hero-lead mt-2 text-sand/80">WhatsApp: {SITE.whatsapp}</p>
           </div>
           <div className="flex flex-wrap gap-4">
             <Link href="/contact" className="inline-block bg-sand px-8 py-4 text-base font-medium text-ink">
-              Get in touch
+              {CTA.appointment}
             </Link>
-            <Link href="/request" className="inline-block border-2 border-sand/70 px-8 py-4 text-base text-sand hover:bg-sand/10">
-              Start a request
+            <a
+              href={`tel:${SITE.phoneTel}`}
+              className="inline-flex items-center gap-2 border-2 border-sand/70 px-8 py-4 text-base text-sand hover:bg-sand/10"
+            >
+              <Phone className="h-4 w-4" />
+              {CTA.callNow}
+            </a>
+            <Link href="/request" className="inline-block border-2 border-sand/50 px-8 py-4 text-base text-sand hover:bg-sand/10">
+              {CTA.planTrip}
             </Link>
           </div>
         </div>

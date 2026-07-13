@@ -55,12 +55,12 @@ export function VoyagerLogo({
           <span className={cn("font-display tracking-[-0.02em]", text)} style={{ color: ink }}>
             Voyager
           </span>
-          <span
-            className="mt-1 text-[0.5625rem] font-semibold uppercase tracking-[0.28em] md:text-[0.625rem]"
-            style={{ color: muted }}
-          >
-            Travel
-          </span>
+            <span
+              className="mt-1 text-[0.5625rem] font-semibold uppercase tracking-[0.28em] md:text-[0.625rem]"
+              style={{ color: muted }}
+            >
+              We plan it
+            </span>
         </span>
       )}
     </span>

@@ -41,18 +41,18 @@ export default function OpenGraphImage() {
                 fontWeight: 600,
               }}
             >
-              Personalized Travel
+              {SITE.tagline}
             </span>
           </div>
         </div>
 
-        <div style={{ maxWidth: 820 }}>
+        <div style={{ display: "flex", flexDirection: "column", maxWidth: 820, gap: 24 }}>
           <p style={{ fontSize: 44, lineHeight: 1.15, margin: 0, letterSpacing: -0.5 }}>
-            Journeys built for you — not from a catalog.
+            Book your next dream vacation with us.
           </p>
           <p
             style={{
-              marginTop: 24,
+              margin: 0,
               fontSize: 22,
               lineHeight: 1.5,
               color: "rgba(246,242,234,0.78)",
@@ -73,8 +73,8 @@ export default function OpenGraphImage() {
             color: "rgba(246,242,234,0.65)",
           }}
         >
-          <span>voyager.travel</span>
-          <span>Custom offers · Operations platform</span>
+          <span>{SITE.email}</span>
+          <span>{SITE.phone}</span>
         </div>
       </div>
     ),
